@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+
+        .tog li {display: inline-block; padding: 10px; border: 1px solid #777;}
+        .tog-menu {display: none;}
+        .active {
+            display: block;
+            animation: myfadein 1s ease-in-out;     /* 호출할 애니메이션, 지속시간, 옵션 */
+        }
+
+        /* 애니메이션 myfadein */
+        @keyframes myfadein {
+            from {
+                opacity: 0;     /* 투명도 */
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+    
+
+
+
+    <section>
+
+        <ul class="tog">
+            <li data-id="#tog1">메뉴1</li>
+            <li data-id="#tog2">메뉴2</li>
+            <li data-id="#tog3">메뉴3</li>
+        </ul>
+
+
+        <!-- 메뉴에 따라서 보여줄 영역 -->
+
+        <div>
+            <div class="tog-menu" id="tog1">토글메뉴1</div>
+            <div class="tog-menu" id="tog2">토글메뉴2</div>
+            <div class="tog-menu" id="tog3">토글메뉴3</div>
+        </div>
+
+
+    </section>
+
+    <script>
+
+        /* 
+            이벤트 위임방식을 이용해서 이벤트를 처리합니다.
+            data-id값을 얻어서 각 아이디에 id에 적합한 태그 class이름에 active를 추가해줍니다.
+            나머지 tog-menu의 active는 지워줍니다.
+         */
+
+
+        var tog = document.querySelector(".tog");
+        tog.onclick = function(e) {
+
+            if(e.target.tagName !== "LI") return;
+            
+            var set = document.querySelector(e.target.dataset.id);
+
+            // set.className = "tog-menu active";
+
+            // console.dir(set);
+
+
+            var menu = document.querySelectorAll(".tog-menu");
+
+            for(var i =0; i < menu.length; i++) {
+                if(menu[i].classList.contains("active")) {
+                    menu[i].classList.remove("active");
+                }
+
+                if(menu[i].id === set.id) {
+                    menu[i].classList.add("active");
+                }
+
+            }
+            
+        }
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

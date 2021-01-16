@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 1.카카오 SDK 호출(원격으로 호출하거나, 다운로드 받아서 사용합니다) -->
+    <!-- <script src="js/kakao.js"></script> -->
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+</head>
+<body>
+    
+    <a id="custom-login-btn" href="javascript:loginWithKakao()">
+        <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222" />
+    </a>
+
+    <button class="kakao_Logout" onclick="kakaoLogout()">로그아웃</button>
+
+    <script>
+        /* 2. 카카오 SDK초기화 */
+        Kakao.init('71553caa8552e4a19b87927a06b5f0d0');
+        console.log( Kakao.isInitialized() );
+
+        /* 3. 사용방법을 확인하고, 코드를 해석해서 로그인 기능  */
+        function loginWithKakao() {
+            Kakao.Auth.login({
+            success: function(authObj) {
+                //접근 권한 - 어세스 토큰을 저장 (카카오 토큰할당에 관한내용을 참조)
+                //console.log(authObj);
+                Kakao.Auth.setAccessToken(authObj.access_token);
+
+                //4. 사용자 계정정보를 얻는 함수를 호출
+                getInfo();
+            },
+            fail: function(err) {
+                alert(JSON.stringify(err))
+            },
+            })
+        }
+            //5.어세스토큰을 만료시켜주는 로그아웃
+            function kakaoLogout() {
+             if (!Kakao.Auth.getAccessToken()) {
+                alert('Not logged in.')
+                return
+                }
+                Kakao.Auth.logout(function() {
+                alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken())
+                
+                })
+            }
+
+        //사용자 계정정보얻는 기능
+        function getInfo() {
+            
+            Kakao.API.request({ //해당함수가 다시한번 카카오 서버로 요청을 해서 필요한 사용자 정보를 콜백함수로 얻어옵니다.
+                url: '/v2/user/me',
+                success: function(data) {
+                    console.log(data); 
+
+                    //1. 이메일 정보 
+                    console.log(data.kakao_account.email)
+                    //2. 프로필 이미지
+                    console.log(data.kakao_account.profile_image_url)
+                    
+                    //3. 닉네임
+                    console.log(data.kakao_account.profile_imag)
+
+
+                },
+                fail: function(error) {
+                    alert('login success, but failed to request user information: ' + JSON.stringify(error) );
+                },
+            })
+        }
+
+
+    </script>
+
+</body>
+</html>

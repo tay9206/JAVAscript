@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 인라인이벤트를 써서 하나의 함수에서 처리 (this, value, innerHTML)을 적절하게 이용하면됩니다 -->
+
+    <h2>자바 스크립트 카운트</h2>
+
+
+    <input type="text" id="result" value=0>
+    <button type="button" onclick="calc(this)">+</button>
+    <button type="button" onclick="calc(this)">-</button>
+
+
+    <script>
+       
+        function calc(oper) {
+            var result = document.getElementById("result");
+            
+            if(oper.innerHTML === "+") {
+                result.value++;
+            } else {    // -인 경우
+                if(result.value <= 0) {
+                    alert("0보다 작을 수 없습니다.");
+                    return;
+                }
+                result.value--;
+            }
+
+
+
+
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>

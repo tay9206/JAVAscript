@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        table, thead th, tbody tr td{border: 1px solid #777; border-spacing: 0; border-collapse: collapse;}
+    </style>
+
+</head>
+<body>
+    
+
+    <h2>이벤트 속성을 이용해서 다음을 만들어 보세요. 다 만들었다면 위임 방식으로 변경하세요</h2>
+
+
+    <table>
+        <thead>
+            <th>번호</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>삭제</th>
+        </thead>
+
+        <tbody>
+            <tr class="section">
+                <td>1</td>
+                <td>첫글</td>
+                <td>hi</td>
+                <td><button type="button">삭제</button></td>
+            </tr>
+            <tr class="section">
+                <td>2</td>
+                <td>첫글</td>
+                <td>hi</td>
+                <td><button type="button">삭제</button></td>
+            </tr>
+            <tr class="section">
+                <td>3</td>
+                <td>첫글</td>
+                <td>hi</td>
+                <td><button type="button">삭제</button></td>
+            </tr>
+            <tr class="section">
+                <td>4</td>
+                <td>첫글</td>
+                <td>hi</td>
+                <td><button type="button">삭제</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+        
+
+
+    <script>
+
+        var b = document.querySelector("body");
+        b.onclick = function(e) {
+            if(e.target.tagName !== 'BUTTON') return;
+            e.target.parentElement.parentElement.remove();
+        }
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

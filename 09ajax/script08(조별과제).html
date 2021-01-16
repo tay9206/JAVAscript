@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <!-- 공공데이터 포털같은데서 API를 적용할 수 있는 주제를 선정 -->
+    <!-- fetch를 이용해서 데이터를 받아온 다음에, 카카오API를 사용해서
+             간단하게 하나의 화면에서 데이터 처리.-->
+
+    <!-- API인증키  466f436d5270747937336a4c414f6d -->
+
+    <script>
+        function getFetch(){
+            fetch("http://openapi.seoul.go.kr:8088/466f436d5270747937336a4c414f6d/json/bikeList/1/5/")
+            .then(function(response){
+                return response.json();
+            }).then(function(data){
+                console.log(data);
+            })
+        }
+
+
+        (function(){
+            getFetch();
+        })();
+
+
+
+    </script>
+
+    
+
+
+
+</body>
+</html>

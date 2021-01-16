@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+<body>
+    
+
+
+
+
+    <button type="button" onclick="check()">클릭</button>
+    <button type="button" onclick="method(2)">홀짝수를 판별하는 함수</button>
+
+
+    <script>
+        // 다음 실행 구문을 일반함수와, 익명함수로 생성해서 각각 확인
+
+        // function check() {
+        //     alert("자바스크립트의 일반함수");
+        // }
+
+        var check = function() {
+            alert("자바스크립트의 일반함수");
+        }
+
+        // function method(x) {
+
+        //     if(x % 2 == 0) {
+        //         alert("짝수 입니다")
+        //     } else {
+        //         alert("홀수 입니다.")
+        //     }
+
+        // }
+
+        var method = function(x) {
+            if(x % 2 == 0) {
+                alert("짝수 입니다.")
+            } else {
+                alert("홀수 입니다.")
+            }
+        }
+
+
+
+        // var point = function(name, su1, su2, su3) {
+        //     var sum = su1 + su2 + su3;
+
+        //     return name + " 님의 평균은 : " + sum/3 + "입니다";
+        // }
+
+        function point(name, su1, su2, su3) {
+            var sum = su1 + su2 + su3;
+            return name + " 님의 평균은 : " + sum/3 + " 입니다"
+        }
+
+        console.log(point("홍길동", 88, 90, 90));
+
+
+
+    </script>
+
+
+
+
+    
+
+
+
+
+
+</body>
+</html>
